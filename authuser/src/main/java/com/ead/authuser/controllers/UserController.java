@@ -93,7 +93,7 @@ public class UserController {
 
         userService.save(userModel);
 
-        log.debug("PUT updateUser userModel saved {} ", userModel.toString());
+        log.debug("PUT updateUser userId saved {} ", userModel.getUserId());
         log.info("User updated successfully userId {} ", userModel.getUserId());
 
         return ResponseEntity.status(HttpStatus.OK).body(userModel);
