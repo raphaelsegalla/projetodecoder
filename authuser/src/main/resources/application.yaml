@@ -21,7 +21,7 @@ spring:
 
 logging:
   level:
-    com.ead: INFO # (TRACE - DEBUG - INFO - WARN - ERROR)
+    com.ead: DEBUG # (TRACE - DEBUG - INFO - WARN - ERROR)
 #    root: DEBUG
 #    org.springframework.web: DEBUG
 #    org.hibernate: DEBUG
