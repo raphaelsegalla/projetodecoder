@@ -2,9 +2,34 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="jboss" />
+      <option name="name" value="jboss" />
+      <option name="url" value="http://repository.jboss.com/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="maven-all" />
+      <option name="url" value="https://repo.intranet.pags/artifactory/maven-all" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Maven2" />
+      <option name="name" value="Maven 2" />
+      <option name="url" value="http://repo1.maven.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2-repository.dev.java.net" />
+      <option name="name" value="Java.net Repository for Maven" />
+      <option name="url" value="http://download.java.net/maven/2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="mvn" />
+      <option name="name" value="mvn" />
+      <option name="url" value="http://mvnrepository.com" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -15,6 +40,11 @@
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="maven-all" />
+      <option name="url" value="https://repo.intranet.pags/artifactory/maven-all" />
     </remote-repository>
   </component>
 </project>
