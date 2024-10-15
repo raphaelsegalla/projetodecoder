@@ -3,6 +3,7 @@ package com.ead.course.validation;
 import com.ead.course.clients.AuthUserClient;
 import com.ead.course.dtos.CourseDto;
 import com.ead.course.dtos.UserDto;
+import com.ead.course.enums.UserStatus;
 import com.ead.course.enums.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,9 @@ public class CourseValidator implements Validator {
             responseUserInstructor = authUserClient.getOneUsersById(userInstructor);
             if (responseUserInstructor.getBody().getUserType().equals(UserType.STUDENT)) {
                 errors.rejectValue("userInstructor", "UserInstructorError", "User must be a INSTRUCTOR o ADMIN.");
+            }
+            if (responseUserInstructor.getBody().getUserStatus().equals(UserStatus.BLOCKED)) {
+                errors.rejectValue("userInstructor", "UserInstructorError", "User don't must be BLOCKED.");
             }
         } catch (HttpStatusCodeException e) {
             if (e.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
