@@ -13,4 +13,5 @@ public interface UserService {
 
     Page<UserModel> findAll(Pageable pageable, Specification<UserModel> spec);
 
+    UserModel save(UserModel userModel);
 }

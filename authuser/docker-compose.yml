@@ -11,9 +11,9 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
 
-  postgres:
+  postgres-ead-authuser:
     image: postgres:latest
-    container_name: postgres
+    container_name: postgres-ead-authuser
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 416424
@@ -23,9 +23,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  postgres-v2:
+  postgres-ead-authuser-v2:
     image: postgres:latest
-    container_name: postgres-v2
+    container_name: postgres-ead-authuser-v2
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 416424
@@ -35,6 +35,32 @@ services:
     volumes:
       - postgres_data_v2:/var/lib/postgresql/data
 
+  postgres-ead-course:
+    image: postgres:latest
+    container_name: postgres-ead-course
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 416424
+      POSTGRES_DB: ead-course
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data_v3:/var/lib/postgresql/data
+
+  postgres-ead-course-v2:
+    image: postgres:latest
+    container_name: postgres-ead-course-v2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 416424
+      POSTGRES_DB: ead-course-v2
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_data_v4:/var/lib/postgresql/data
+
 volumes:
   postgres_data:
   postgres_data_v2:
+  postgres_data_v3:
+  postgres_data_v4:
