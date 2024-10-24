@@ -19,5 +19,8 @@ public interface UserService {
     boolean existsByEmail(String email);
     Page<UserModel> findAll(Pageable pageable, Specification<UserModel> spec);
     UserModel saveUser(UserModel userModel);
+    void deleteUser(UserModel userModel);
+    UserModel updateUser(UserModel userModel);
+    UserModel updatePassword(UserModel userModel);
 
 }
