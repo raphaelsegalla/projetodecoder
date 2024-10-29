@@ -4,6 +4,15 @@ server:
 spring:
   application:
     name: ead-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/raphaelsegalla/projetodecoder
+          default-label: asynchronous-communication
+          search-paths: ead-config-server-repo
+#          username: raphaelsegalla
+#          password: ****token-github****
 
 eureka:
   client:
