@@ -48,6 +48,18 @@ ead:
     exchange:
       userEventExchange: ead.userevent
 
+authuser:
+  refreshscope:
+    name: Raphael Segalla
+
+management:
+  endpoints:
+    web: 
+      exposure:
+        include:
+          - refresh
+          - health
+
 resilience4j:
   circuitbreaker:
     instances:
