@@ -59,8 +59,21 @@ services:
     volumes:
       - postgres_data_v4:/var/lib/postgresql/data
 
+  postgres-ead-notification-v2:
+    image: postgres:latest
+    container_name: postgres-ead-notification-v2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 416424
+      POSTGRES_DB: ead-notification-v2
+    ports:
+      - "5437:5432"
+    volumes:
+      - postgres_data_v5:/var/lib/postgresql/data
+
 volumes:
   postgres_data:
   postgres_data_v2:
   postgres_data_v3:
   postgres_data_v4:
+  postgres_data_v5:
