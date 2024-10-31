@@ -3,56 +3,56 @@ server:
   servlet:
       context-path: '/ead-notification/'
 
-  spring:
-    application:
-      name: ead-notification-service
+spring:
+  application:
+    name: ead-notification-service
+  config:
+    import: 'optional:configserver:'
+  cloud:
     config:
-      import: 'optional:configserver:'
-    cloud:
-      config:
-        discovery:
-          serviceId: ead-config-server
-    datasource:
-      url: jdbc:postgresql://localhost:5437/ead-notification-v2
-      username: postgres
-      password: 416424
-    jpa:
+      discovery:
+        serviceId: ead-config-server
+  datasource:
+    url: jdbc:postgresql://localhost:5437/ead-notification-v2
+    username: postgres
+    password: 416424
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
       hibernate:
-        ddl-auto: update
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        jdbc:
-          lob.non-contextual-creation: true
-      properties:
-        hibernate:
-          show_sql: true
-    output:
-      ansi:
-        enabled: Always
-      rabbitmq:
-    #    addresses: amqps://nocfobfk:s7gaT0kz3iAdcxQP6Y-7rrMwAwOK49qP@jackal.rmq.cloudamqp.com/nocfobfk
-        host: localhost
-        port: 5672
-        username: guest
-        password: guest
+        show_sql: true
+  output:
+    ansi:
+      enabled: Always
+    rabbitmq:
+  #    addresses: amqps://nocfobfk:s7gaT0kz3iAdcxQP6Y-7rrMwAwOK49qP@jackal.rmq.cloudamqp.com/nocfobfk
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
 
 logging:
-  level:
-    com.ead: DEBUG # (TRACE - DEBUG - INFO - WARN - ERROR)
+level:
+  com.ead: DEBUG # (TRACE - DEBUG - INFO - WARN - ERROR)
 #    root: DEBUG
 #    org.springframework.web: DEBUG
 #    org.hibernate: DEBUG
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - health
-          - refresh
+endpoints:
+  web:
+    exposure:
+      include:
+        - health
+        - refresh
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: 'http://localhost:8761/eureka'
-  instance:
-    hostname: localhost
+client:
+  serviceUrl:
+    defaultZone: 'http://localhost:8761/eureka'
+instance:
+  hostname: localhost
