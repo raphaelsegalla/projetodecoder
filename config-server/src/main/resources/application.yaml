@@ -15,6 +15,9 @@ spring:
 #          password: ****token-github****
 
 ead:
+  configServer:
+    username: configserver
+    password: 416424
   serviceRegistry:
     username: serviceregistry
     password: 416424

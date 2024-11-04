@@ -81,3 +81,8 @@ insert into tb_users values
 insert into tb_users_courses values ('3c6e7d9b-e90a-4b1d-9348-3d06b2b899a6', '5930ec8f-ec0e-4a81-a581-b899b4474323', '4ac94bbf-e80e-48ec-a79e-112755c01f26');
 insert into tb_users_courses values ('7bf73e9d-32cc-4b0b-a4f2-186a729cc3da', '5930ec8f-ec0e-4a81-a581-b899b4474323', '80bc76fd-fc0d-44b6-a8f6-c37b8da265a7');
 insert into tb_users_courses values ('6e000ef7-92fb-4454-a42f-c5ee2dd9ee03', 'db97a33e-c9fa-4225-9c0f-56a15907074c', '4ac94bbf-e80e-48ec-a79e-112755c01f26');
+
+insert into tb_roles values ('24924ef3-15ca-44e7-b615-d199b8506f65', 'ROLE_ADMIN');
+insert into tb_roles values ('91d720a0-a7db-4736-87a7-e1cd4ddabc2f', 'ROLE_INSTRUCTOR');
+insert into tb_roles values ('d831507e-37db-48f3-aab7-1a53cca2053f', 'ROLE_STUDENT');
+insert into tb_roles values ('9c986ff6-32c8-4457-84da-ce81edcd3736', 'ROLE_USER');
