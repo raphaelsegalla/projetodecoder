@@ -26,8 +26,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Base64;
 
 @Log4j2
 @RestController
@@ -93,6 +95,15 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateJwt(authentication);
         return ResponseEntity.ok(new JwtDto(jwt));
+    }
+
+    @PostMapping("/secretKey")
+    public String createSecretKey() {
+        SecureRandom secureRandom = new SecureRandom();
+        byte[] secretBytes = new byte[64]; //36*8=288 (>256 bits required for HS256)
+        secureRandom.nextBytes(secretBytes);
+        Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
+        return encoder.encodeToString(secretBytes);
     }
 
 }
