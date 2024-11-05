@@ -3,7 +3,7 @@ ead:
     username: serviceregistry
     password: 416424
   auth:
-    jwtSecret: t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbPeShVmYq3t6w9z$B&E)H@McQfTjWn
+    jwtSecret: Ixl4_0Uv9RohXUYF4c9wSw7Ehtc5zxJqkleYfC37cJFOXOofNqq6oUfb7lVDQeqQdWcq1fqR69oafuZuZ2vTJg
     jwtExpirationMs: 14400000
 
 eureka:
