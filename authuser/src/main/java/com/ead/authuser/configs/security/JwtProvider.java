@@ -2,12 +2,15 @@ package com.ead.authuser.configs.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.security.Key;
 import java.util.Date;
 
 @Log4j2
@@ -22,11 +25,12 @@ public class JwtProvider {
 
     public String generateJwt(Authentication authentication) {
         UserDetails userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+        Key key = Keys.hmacShaKeyFor(Decoders.BASE64URL.decode(jwtSecret));
         return Jwts.builder()
                 .setSubject(userPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
     }
 
