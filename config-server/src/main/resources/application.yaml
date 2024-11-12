@@ -1,32 +1,5 @@
-server:
-  port: 8888
-
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
   application:
     name: ead-config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/raphaelsegalla/projetodecoder
-          default-label: asynchronous-communication
-          search-paths: ead-config-server-repo
-#          username: raphaelsegalla
-#          password: ****token-github****
-
-ead:
-  configServer:
-    username: configserver
-    password: 416424
-  serviceRegistry:
-    username: serviceregistry
-    password: 416424
-
-eureka:
-  client:
-    serviceUrl:
-#      defaultZone: 'http://localhost:8761/eureka'
-      defaultZone: 'http://${ead.serviceRegistry.username}:${ead.serviceRegistry.password}@localhost:8761/eureka'
-
-  instance:
-    hostname: localhost

@@ -1,0 +1,29 @@
+server:
+  port: ${PORT}
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/raphaelsegalla/projetodecoder
+          default-label: asynchronous-communication
+          search-paths: ead-config-server-repo
+#          username: raphaelsegalla
+#          password: ****token-github****
+
+encrypt:
+  key: q7FXt7Zw7SOWR4G1r2wQp685Qc+FQsKb5BHpOPAc40mRVbo8wWJsA42Blqc0kWzV
+
+ead:
+  configServer:
+    username: ${CONFIG_SERVER_USERNAME}
+    password: ${CONFIG_SERVER_PASSWORD}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL}
+  instance:
+    hostname: ${APP_DOMAIN_NAME}
+    non-secure-port: 80
