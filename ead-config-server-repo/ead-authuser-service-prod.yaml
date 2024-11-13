@@ -1,0 +1,77 @@
+server:
+  port: 8087
+  servlet:
+    context-path: '/ead-authuser/'
+
+spring:
+  application:
+    name: ead-authuser-service
+  datasource:
+    url: jdbc:postgresql://localhost:5434/ead-authuser-v2
+    username: postgres
+    password: 416424
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+        show_sql: true
+  output:
+    ansi:
+      enabled: Always
+  rabbitmq:
+#    addresses: amqps://nocfobfk:s7gaT0kz3iAdcxQP6Y-7rrMwAwOK49qP@jackal.rmq.cloudamqp.com/nocfobfk
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+logging:
+  level:
+    com.ead: DEBUG # (TRACE - DEBUG - INFO - WARN - ERROR)
+#    root: DEBUG
+#    org.springframework.web: DEBUG
+#    org.hibernate: DEBUG
+#  pattern:
+#    #    console: "%d{yyyy-MM-dd HH:mm:ss} %-8level [%X{traceId:-}, %X{spanId:-}] %cyan(%logger{36}) - %msg%n"
+#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-8level) [%X{traceId:-}, %X{spanId:-}] [%cyan(%logger{36}):%magenta(%line)] %red(%method) => %msg%n"
+
+ead:
+  api:
+    url:
+#      course: 'http://localhost:8082'
+      course: 'http://ead-course-service/ead-course'
+  broker:
+    exchange:
+      userEventExchange: ead.userevent
+
+authuser:
+  refreshscope:
+    name: Raphael Segalla atualizado!!!!!
+
+management:
+  endpoints:
+    web: 
+      exposure:
+        include:
+          - refresh
+          - health
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuitbreakerInstance:
+        slidingWindowSize: 30
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 2
+        waitDurationInOpenState: 30s
+        failureRateThreshold: 80
+  retry:
+    instances:
+      retryInstance:
+        maxRetryAttempts: 3
+        waitDuration: 5s
