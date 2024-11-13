@@ -1,5 +1,5 @@
 server:
-  port: 8087
+  port: ${PORT}
   servlet:
     context-path: '/ead-authuser/'
 
@@ -7,9 +7,9 @@ spring:
   application:
     name: ead-authuser-service
   datasource:
-    url: jdbc:postgresql://localhost:5434/ead-authuser-v2
-    username: postgres
-    password: 416424
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -23,21 +23,7 @@ spring:
     ansi:
       enabled: Always
   rabbitmq:
-#    addresses: amqps://nocfobfk:s7gaT0kz3iAdcxQP6Y-7rrMwAwOK49qP@jackal.rmq.cloudamqp.com/nocfobfk
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
-logging:
-  level:
-    com.ead: DEBUG # (TRACE - DEBUG - INFO - WARN - ERROR)
-#    root: DEBUG
-#    org.springframework.web: DEBUG
-#    org.hibernate: DEBUG
-#  pattern:
-#    #    console: "%d{yyyy-MM-dd HH:mm:ss} %-8level [%X{traceId:-}, %X{spanId:-}] %cyan(%logger{36}) - %msg%n"
-#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-8level) [%X{traceId:-}, %X{spanId:-}] [%cyan(%logger{36}):%magenta(%line)] %red(%method) => %msg%n"
+    addresses: ${CLOUDAMQP_URL}
 
 ead:
   api:
