@@ -38,7 +38,7 @@ public class InstructorController {
         if (userModelOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
         }
-        RoleModel roleModel = roleService.findByRoleName(RoleType.ROLE_STUDENT)
+        RoleModel roleModel = roleService.findByRoleName(RoleType.ROLE_INSTRUCTOR)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found"));
 
         var userModel = userModelOptional.get();
