@@ -71,9 +71,22 @@ services:
     volumes:
       - postgres_data_v5:/var/lib/postgresql/data
 
+  postgres-ead-notification-hex:
+    image: postgres:latest
+    container_name: postgres-ead-notification-hex
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 416424
+      POSTGRES_DB: ead-notification-hex
+    ports:
+      - "5438:5432"
+    volumes:
+      - postgres_data_v6:/var/lib/postgresql/data
+
 volumes:
   postgres_data:
   postgres_data_v2:
   postgres_data_v3:
   postgres_data_v4:
   postgres_data_v5:
+  postgres_data_v6:
