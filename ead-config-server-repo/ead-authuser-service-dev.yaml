@@ -31,10 +31,10 @@ spring:
 
 logging:
   level:
-    com.ead: DEBUG # (TRACE - DEBUG - INFO - WARN - ERROR)
-#    root: DEBUG
-#    org.springframework.web: DEBUG
-#    org.hibernate: DEBUG
+    com.ead: INFO # (TRACE - DEBUG - INFO - WARN - ERROR)
+   root: INFO
+   org.springframework.web: INFO
+   org.hibernate: INFO
 #  pattern:
 #    #    console: "%d{yyyy-MM-dd HH:mm:ss} %-8level [%X{traceId:-}, %X{spanId:-}] %cyan(%logger{36}) - %msg%n"
 #    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-8level) [%X{traceId:-}, %X{spanId:-}] [%cyan(%logger{36}):%magenta(%line)] %red(%method) => %msg%n"
